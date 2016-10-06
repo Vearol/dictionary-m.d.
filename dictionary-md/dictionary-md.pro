@@ -6,7 +6,9 @@ CONFIG += c++11
 SOURCES += main.cpp \
     Disease.cpp \
     Drugstore.cpp \
-    Medicament.cpp
+    Medicament.cpp \
+    IncurableDisease.cpp \
+    CurableDisease.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,5 +21,7 @@ include(deployment.pri)
 HEADERS += \
     Disease.h \
     Drugstore.h \
-    Medicament.h
+    Medicament.h \
+    IncurableDisease.h \
+    CurableDisease.h
 
