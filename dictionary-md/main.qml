@@ -3,17 +3,8 @@ import QtQuick.Window 2.2
 
 Window {
     visible: true
+    minimumWidth: 800
+    minimumHeight: 600
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
-    }
-
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
 }
 

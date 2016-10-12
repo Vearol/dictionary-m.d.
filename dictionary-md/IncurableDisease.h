@@ -7,6 +7,12 @@ class IncurableDisease : public Disease
 {
 public:
     IncurableDisease();
+
+    bool getCurability();
+
+private:
+    bool curable;
+
 };
 
 #endif // INCURABLEDISEASE_H

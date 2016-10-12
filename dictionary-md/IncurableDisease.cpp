@@ -5,3 +5,8 @@ IncurableDisease::IncurableDisease()
 
 }
 
+bool IncurableDisease::getCurability()
+{
+    return curable;
+}
+
