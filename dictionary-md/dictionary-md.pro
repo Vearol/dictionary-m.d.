@@ -8,7 +8,11 @@ SOURCES += main.cpp \
     Drugstore.cpp \
     Medicament.cpp \
     IncurableDisease.cpp \
-    CurableDisease.cpp
+    CurableDisease.cpp \
+    Dictionary.cpp \
+    TestDrug.cpp \
+    WorkingDrug.cpp \
+    DBmodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -23,5 +27,9 @@ HEADERS += \
     Drugstore.h \
     Medicament.h \
     IncurableDisease.h \
-    CurableDisease.h
+    CurableDisease.h \
+    Dictionary.h \
+    TestDrug.h \
+    WorkingDrug.h \
+    DBmodel.h
 

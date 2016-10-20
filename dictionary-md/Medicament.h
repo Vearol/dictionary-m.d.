@@ -13,7 +13,6 @@ private:
     QString drugName;
     double price;
     int amount;
-    QVector<QString> sameDrugs;
     QString creator;
     QString form;
     double dose;
