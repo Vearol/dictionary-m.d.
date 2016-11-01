@@ -1,6 +1,7 @@
 TEMPLATE = app
 
 QT += qml quick
+QT += sql
 CONFIG += c++11
 
 SOURCES += main.cpp \
@@ -12,7 +13,7 @@ SOURCES += main.cpp \
     Dictionary.cpp \
     TestDrug.cpp \
     WorkingDrug.cpp \
-    DBmodel.cpp
+    CustomSqlModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,5 +32,5 @@ HEADERS += \
     Dictionary.h \
     TestDrug.h \
     WorkingDrug.h \
-    DBmodel.h
+    CustomSqlModel.h
 

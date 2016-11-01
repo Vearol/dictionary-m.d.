@@ -1,4 +1,5 @@
 import QtQuick 2.3
+import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
 
 Window {
@@ -7,25 +8,42 @@ Window {
     minimumHeight: 600
 
     Rectangle {
-        width: 500
-        height: 500
-        MouseArea {
+        visible: true
+        width: 800
+        height: 600
+
+        Rectangle {
+            id: root
             anchors.fill: parent
-            Text {
-                id: text1
-                anchors.verticalCenterOffset: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Testing")
-                font.pixelSize: 12
+
+            TableView {
+                id: studentView
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+
+                    bottomMargin: 100
                 }
-            ListView {
-                id: list_view1
-                x: 125
-                y: 100
-                width: 110
-                height: 160
-                delegate: DBdelegate {}
                 model: dbmodel
+
+                TableViewColumn {
+                    role: "name"
+                    title: "name"
+                }
+                TableViewColumn {
+                    role: "symptoms"
+                    title: "symptoms"
+                }
+                TableViewColumn {
+                    role: "procedures"
+                    title: "procedures"
+                }
+                TableViewColumn {
+                    role: "drugs"
+                    title: "drugs"
+                }
             }
         }
     }
