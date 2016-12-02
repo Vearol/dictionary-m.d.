@@ -3,14 +3,17 @@
 #include <QQmlContext>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQueryModel>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 #include <QDebug>
 
 #include "CustomSqlModel.h"
+#include "Disease.h"
+#include "Medicament.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
 
     QQmlApplicationEngine engine;
 
@@ -22,18 +25,28 @@ int main(int argc, char *argv[])
     db.setUserName("lyubomyr");
     db.setPassword("1");
     bool ok = db.open();
-    if(ok != true){
+    if (ok != true){
         qDebug() << "Connection: Connection Failed!";
     }
-    else{
+    else {
         qDebug() << "Connection: Connection OK!";
     }
 
-    CustomSqlModel *dbModel = new CustomSqlModel();
-    dbModel->setQuery("select * from disease");
+    CustomSqlModel *diseaseModel = new CustomSqlModel();
+    diseaseModel->setQuery("select * from disease");
+    CustomSqlModel *drugModel = new CustomSqlModel();
+    drugModel->setQuery("select * from medicament");
 
-    context->setContextProperty("dbmodel", dbModel);
+    Disease disease;
+    disease.getData();
 
+    Medicament drug;
+    drug.getData();
+
+    context->setContextProperty("diseaseModel", diseaseModel);
+    context->setContextProperty("drugModel", drugModel);
+
+    //QSqlQuery a;
     // db.close();
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

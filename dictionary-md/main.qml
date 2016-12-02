@@ -10,23 +10,22 @@ Window {
     Rectangle {
         visible: true
         width: 800
-        height: 600
+        height: 300
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.left: parent.left
 
         Rectangle {
-            id: root
             anchors.fill: parent
 
             TableView {
-                id: studentView
                 anchors {
                     top: parent.top
                     left: parent.left
                     right: parent.right
                     bottom: parent.bottom
-
-                    bottomMargin: 100
                 }
-                model: dbmodel
+                model: diseaseModel
 
                 TableViewColumn {
                     role: "name"
@@ -45,6 +44,77 @@ Window {
                     title: "drugs"
                 }
             }
+            Button {
+                text: "Set data"
+                onClicked: diseaseModel.setData(index)
+            }
+            Text {
+                id: select1
+                text: qsTr("Select by:")
+            }
+            Button {
+                onClicked: diseaseModel.getData(select1.text)
+            }
+        }
+    }
+
+
+    Rectangle {
+        visible: true
+        width: 800
+        height: 300
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.left: parent.left
+
+        Rectangle {
+            anchors.fill: parent
+
+            TableView {
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                model: drugModel
+
+                TableViewColumn {
+                    role: "name"
+                    title: "name"
+                }
+                TableViewColumn {
+                    role: "price"
+                    title: "price"
+                }
+                TableViewColumn {
+                    role: "amount"
+                    title: "amount"
+                }
+                TableViewColumn {
+                    role: "creator"
+                    title: "creator"
+                }
+                TableViewColumn {
+                    role: "form"
+                    title: "form"
+                }
+                TableViewColumn {
+                    role: "dose"
+                    title: "dose"
+                }
+            }
+            Button {
+                text: "Set data"
+                onClicked: drugModel.setData(index)
+            }
+        }
+        Text {
+            id: select2
+            text: qsTr("Select by:")
+        }
+        Button {
+            onClicked: drugModel.getData(select2.text)
         }
     }
 }

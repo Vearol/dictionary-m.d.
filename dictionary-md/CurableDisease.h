@@ -2,6 +2,7 @@
 #define CURABLEDISEASE_H
 
 #include "Disease.h"
+#include <QVector>
 
 class CurableDisease : public Disease
 {
@@ -12,7 +13,7 @@ public:
 
 private:
     bool curable;
-
+    QVector<Disease> curableList;
 };
 
 #endif // CURABLEDISEASE_H
