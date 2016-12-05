@@ -26,7 +26,6 @@ void CustomSqlModel::generateRoleNames()
     m_roleNames.clear();
     for(int i = 0; i < record().count(); i ++) {
         m_roleNames.insert(Qt::UserRole + i + 1, record().fieldName(i).toUtf8());
-        qDebug() << record().fieldName(i).toUtf8() << endl;
     }
 }
 

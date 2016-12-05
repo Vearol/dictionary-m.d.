@@ -1,4 +1,5 @@
 #include "Medicament.h"
+#include <QSqlRecord>
 
 Medicament::Medicament()
 {
@@ -40,26 +41,25 @@ void Medicament::getData()
             working[i].dose = doseN;
             working[i].price = priceN;
         }
+    }
 }
 
-void Medicament::setData(QString newDrugName, double newPrice, int newAmount, QString newCreator, QString newForm, double newDose)
+void Medicament::setData(QString newDrugName, double newPrice, int newAmount, QString newCreator, QString newForm, double newDose, int row)
 {
     QSqlTableModel model;
     model.setTable("medicament");
     model.select();
 
     int rowCount = model.rowCount();
-    incurable.reserve(rowCount);
-    curable.reserve(rowCount);
+    testing.reserve(rowCount);
+    working.reserve(rowCount);
 
-    for (int i = 0; i < rowCount; ++i) {
-        QSqlRecord record = model.record(i);
-        record.setValue(newDrugName, "name");
-        record.setValue(newPrice, "price");
-        record.setValue(newAmount, "amount");
-        record.setValue(newForm, "form");
-        record.setValue(newDose, "dose");
-
-    }
+    QSqlRecord record = model.record(row);
+    record.setValue(newDrugName, "name");
+    record.setValue(newPrice, "price");
+    record.setValue(newAmount, "amount");
+    record.setValue(newForm, "form");
+    record.setValue(newCreator, "creator");
+    record.setValue(newDose, "dose");
 }
 

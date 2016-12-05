@@ -13,7 +13,9 @@ SOURCES += main.cpp \
     Dictionary.cpp \
     TestDrug.cpp \
     WorkingDrug.cpp \
-    CustomSqlModel.cpp
+    CustomSqlModel.cpp \
+    DiseaseData.cpp \
+    MedicamentData.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,5 +34,7 @@ HEADERS += \
     Dictionary.h \
     TestDrug.h \
     WorkingDrug.h \
-    CustomSqlModel.h
+    CustomSqlModel.h \
+    DiseaseData.h \
+    MedicamentData.h
 

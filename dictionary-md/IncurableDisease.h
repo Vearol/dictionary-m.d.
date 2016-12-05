@@ -11,8 +11,6 @@ public:
 
     bool getCurability();
 
-    QVector<Disease> incurableList;
-
 private:
     bool curable;
 };

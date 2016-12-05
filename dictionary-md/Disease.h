@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QSqlTableModel>
 #include <QList>
+#include "DiseaseData.h"
 
 class Disease
 {
@@ -12,19 +13,11 @@ public:
     Disease();
 
     void getData();
-    void setData(QString newName, QString newSymptoms, QString newProcedures, QString newDrugs);
-
-private:
-    QString diseaseName;
-    QVector<QString> symptoms;
-    QVector<QString> procedures;
-    QVector<QString> drugs;
-
-    QSqlTableModel diseaseTable;
+    void setData(QString newName, QString newSymptoms, QString newProcedures, QString newDrugs, int row);
 
 protected:
-    QList<Disease> incurable;
-    QList<Disease> curable;
+    QList<DiseaseData> incurable;
+    QList<DiseaseData> curable;
 };
 
 #endif // DISEASE_H

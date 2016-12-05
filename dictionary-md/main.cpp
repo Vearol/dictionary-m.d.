@@ -40,8 +40,8 @@ int main(int argc, char *argv[])
     Disease disease;
     disease.getData();
 
-    Medicament drug;
-    drug.getData();
+   // Medicament drug;
+   // drug.getData();
 
     context->setContextProperty("diseaseModel", diseaseModel);
     context->setContextProperty("drugModel", drugModel);

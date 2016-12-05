@@ -13,7 +13,6 @@ public:
 
 private:
     bool curable;
-    QVector<Disease> curableList;
 };
 
 #endif // CURABLEDISEASE_H
