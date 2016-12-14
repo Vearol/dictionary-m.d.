@@ -1,11 +1,12 @@
 #include "Medicament.h"
 #include <QSqlRecord>
+#include <QDebug>
 
 Medicament::Medicament()
 {
 }
 
-void Medicament::getData()
+void Medicament::loadData()
 {
     QSqlTableModel model;
     model.setTable("medicament");
@@ -20,39 +21,40 @@ void Medicament::getData()
         QString nameN = record.value("name").toString();
         QString creatorN = record.value("creator").toString();
         QString formN = record.value("form").toString();
+        QString curesN = record.value("cures").toString();
         double priceN = record.value("price").toDouble();
         double doseN = record.value("dose").toDouble();
         double amountN = record.value("amount").toInt();
         double statusN = record.value("status").toInt();
-
+        MedicamentData newData;
         if (statusN == 0){
-            testing[i].drugName = nameN;
-            testing[i].creator = creatorN;
-            testing[i].amount = amountN;
-            testing[i].form = formN;
-            testing[i].dose = doseN;
-            testing[i].price = priceN;
+            newData.drugName = nameN;
+            newData.creator = creatorN;
+            newData.amount = amountN;
+            newData.form = formN;
+            newData.dose = doseN;
+            newData.price = priceN;
+            newData.cures = curesN;
+            testing.push_back(newData);
         }
         else {
-            working[i].drugName = nameN;
-            working[i].creator = creatorN;
-            working[i].amount = amountN;
-            working[i].form = formN;
-            working[i].dose = doseN;
-            working[i].price = priceN;
+            newData.drugName = nameN;
+            newData.creator = creatorN;
+            newData.amount = amountN;
+            newData.form = formN;
+            newData.dose = doseN;
+            newData.price = priceN;
+            newData.cures = curesN;
+            working.push_back(newData);
         }
     }
 }
 
-void Medicament::setData(QString newDrugName, double newPrice, int newAmount, QString newCreator, QString newForm, double newDose, int row)
+void Medicament::setData(QString newDrugName, double newPrice, int newAmount, QString newCreator, QString newForm, QString newCures, double newDose, int row)
 {
     QSqlTableModel model;
     model.setTable("medicament");
     model.select();
-
-    int rowCount = model.rowCount();
-    testing.reserve(rowCount);
-    working.reserve(rowCount);
 
     QSqlRecord record = model.record(row);
     record.setValue(newDrugName, "name");
@@ -61,5 +63,11 @@ void Medicament::setData(QString newDrugName, double newPrice, int newAmount, QS
     record.setValue(newForm, "form");
     record.setValue(newCreator, "creator");
     record.setValue(newDose, "dose");
+    record.setValue(newCures, "cures");
+}
+
+QList<MedicamentData> Medicament::getWorkingDrugs()
+{
+    return working;
 }
 

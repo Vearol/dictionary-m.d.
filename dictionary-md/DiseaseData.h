@@ -4,11 +4,9 @@
 #include <QString>
 #include <QVector>
 
-class DiseaseData
+struct DiseaseData
 {
 public:
-    DiseaseData();
-
     QString diseaseName;
     QVector<QString> symptoms;
     QVector<QString> procedures;

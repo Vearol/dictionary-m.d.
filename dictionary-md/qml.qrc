@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>DiseaseTablePopup.qml</file>
+        <file>ElButton.qml</file>
+        <file>Colors.js</file>
+        <file>MedicamentTablePopup.qml</file>
+        <file>RecipePopup.qml</file>
+        <file>ActiveButton.qml</file>
+        <file>SymptomsTable.qml</file>
     </qresource>
 </RCC>

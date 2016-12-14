@@ -12,9 +12,10 @@ class Medicament
 public:
     Medicament();
 
-    void getData();
-    void setData(QString drugName, double price, int amount, QString creator, QString form, double dose, int row);
+    void loadData();
+    void setData(QString drugName, double price, int amount, QString creator, QString form, QString newCures, double dose, int row);
 
+    QList<MedicamentData> getWorkingDrugs();
 protected:
     QList<MedicamentData> testing;
     QList<MedicamentData> working;

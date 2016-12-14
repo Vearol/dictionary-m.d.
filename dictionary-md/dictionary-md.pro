@@ -13,9 +13,7 @@ SOURCES += main.cpp \
     Dictionary.cpp \
     TestDrug.cpp \
     WorkingDrug.cpp \
-    CustomSqlModel.cpp \
-    DiseaseData.cpp \
-    MedicamentData.cpp
+    CustomSqlModel.cpp
 
 RESOURCES += qml.qrc
 

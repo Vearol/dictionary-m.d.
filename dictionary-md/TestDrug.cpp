@@ -2,6 +2,5 @@
 
 TestDrug::TestDrug()
 {
-
 }
 

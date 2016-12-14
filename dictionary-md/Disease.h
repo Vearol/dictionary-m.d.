@@ -12,7 +12,7 @@ class Disease
 public:
     Disease();
 
-    void getData();
+    void loadData();
     void setData(QString newName, QString newSymptoms, QString newProcedures, QString newDrugs, int row);
 
 protected:

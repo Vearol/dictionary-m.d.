@@ -9,13 +9,16 @@
 
 #include "CustomSqlModel.h"
 #include "Disease.h"
+#include "Dictionary.h"
 #include "Medicament.h"
+#include "Drugstore.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    Dictionary dict;
 
     QQmlContext *context = engine.rootContext();
 
@@ -27,9 +30,11 @@ int main(int argc, char *argv[])
     bool ok = db.open();
     if (ok != true){
         qDebug() << "Connection: Connection Failed!";
+        dict.setMessage("Connection: Connection Failed!");
     }
     else {
         qDebug() << "Connection: Connection OK!";
+        dict.setMessage("Connection: Connection OK!");
     }
 
     CustomSqlModel *diseaseModel = new CustomSqlModel();
@@ -38,13 +43,19 @@ int main(int argc, char *argv[])
     drugModel->setQuery("select * from medicament");
 
     Disease disease;
-    disease.getData();
+    disease.loadData();
 
-   // Medicament drug;
-   // drug.getData();
+    Medicament drugs;
+    drugs.loadData();
+
+    Drugstore store;
+    store.bestWorkingDrug.setDrugList(drugs.getWorkingDrugs());
 
     context->setContextProperty("diseaseModel", diseaseModel);
     context->setContextProperty("drugModel", drugModel);
+    context->setContextProperty("drugStore", &store);
+    context->setContextProperty("dict", &dict);
+
 
     //QSqlQuery a;
     // db.close();

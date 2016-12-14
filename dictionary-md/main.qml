@@ -1,51 +1,110 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
+import "Colors.js" as Colors
+
 
 Window {
+    id: mainWindow
     visible: true
     minimumWidth: 800
     minimumHeight: 600
 
+    color: Colors.applicationBackgroundColor
+
     Rectangle {
-        visible: true
-        width: 800
-        height: 300
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: 60
+        color: Colors.darkGrayColor
 
-        Rectangle {
-            anchors.fill: parent
+        Rectangle{
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            height: 20
+            width: 200
+            Text {
+                anchors.fill: parent
+                anchors.leftMargin: 5
+                text: dict.currentProgress()
+            }
+        }
 
-            TableView {
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-                model: diseaseModel
+        ActiveButton {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.right: parent.right
+            anchors.rightMargin: 40
 
-                TableViewColumn {
-                    role: "name"
-                    title: "name"
+
+            height: 35
+            width: 130
+
+            text: "Disease Table"
+
+            function launchDialog(componentName, directParent, options) {
+                var component = Qt.createComponent(componentName);
+                if (component.status !== Component.Ready) {
+                    console.debug("Component Error: " + component.errorString());
+                } else {
+                    var instance = component.createObject(directParent, options);
                 }
-                TableViewColumn {
-                    role: "symptoms"
-                    title: "symptoms"
+            }
+
+            onClicked: {
+                launchDialog("DiseaseTablePopup.qml", mainWindow, {})
+            }
+        }
+
+        ActiveButton {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.rightMargin: 200
+            anchors.right: parent.right
+
+            height: 35
+            width: 130
+
+            text: "Drug Table"
+
+            function launchDialog(componentName, directParent, options) {
+                var component = Qt.createComponent(componentName);
+                if (component.status !== Component.Ready) {
+                    console.debug("Component Error: " + component.errorString());
+                } else {
+                    var instance = component.createObject(directParent, options);
                 }
-                TableViewColumn {
-                    role: "procedures"
-                    title: "procedures"
+            }
+
+            onClicked: {
+                launchDialog("MedicamentTablePopup.qml", mainWindow, {})
+            }
+        }
+
+        ActiveButton {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.rightMargin: 360
+            anchors.right: parent.right
+
+            height: 35
+            width: 130
+
+            text: "Recipe"
+
+            function launchDialog(componentName, directParent, options) {
+                var component = Qt.createComponent(componentName);
+                if (component.status !== Component.Ready) {
+                    console.debug("Component Error: " + component.errorString());
+                } else {
+                    var instance = component.createObject(directParent, options);
                 }
-                TableViewColumn {
-                    role: "drugs"
-                    title: "drugs"
-                }
+            }
+
+            onClicked: {
+                launchDialog("RecipePopup.qml", mainWindow, {})
             }
         }
     }
-
 }
 

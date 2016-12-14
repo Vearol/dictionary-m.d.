@@ -6,7 +6,7 @@ Disease::Disease()
 {
 }
 
-void Disease::getData()
+void Disease::loadData()
 {
     QSqlTableModel model;
     model.setTable("disease");
@@ -26,30 +26,33 @@ void Disease::getData()
         int drugSize = drugsList.size();
         int sympSize = symptomsList.size();
         int procSize = proceduresList.size();
+        DiseaseData newData;
+
         if (drugSize > 0){
-            DiseaseData newData;
-            curable[i] = newData;
-        //    curable[i].diseaseName = name;
+            newData.diseaseName = name;
             for (int j = 0; j < sympSize; j++){
-           //     curable[i].symptoms.push_back(symptomsList[j]);
+                newData.symptoms.push_back(symptomsList[j]);
             }
             for (int j = 0; j < procSize; j++){
-          //      curable[i].procedures.push_back(proceduresList[j]);
+                newData.procedures.push_back(proceduresList[j]);
             }
             for (int j = 0; j < drugSize; j++){
-          //      curable[i].drugs.push_back(drugsList[j]);
+                newData.drugs.push_back(drugsList[j]);
             }
+            curable.push_back(newData);
         }
         else {
-          //  incurable[i].diseaseName = name;
+            newData.diseaseName = name;
             for (int j = 0; j < sympSize; j++){
-         //       incurable[i].symptoms.push_back(symptomsList[j]);
+                newData.symptoms.push_back(symptomsList[j]);
             }
             for (int j = 0; j < procSize; j++){
-          //      incurable[i].procedures.push_back(proceduresList[j]);
+                newData.procedures.push_back(proceduresList[j]);
             }
+            newData.drugs.clear();
+            incurable.push_back(newData);
         }
-        qDebug() << name;
+
     }
 }
 
@@ -68,6 +71,4 @@ void Disease::setData(QString newName, QString newSymptoms, QString newProcedure
     record.setValue(newProcedures, "procedures");
     record.setValue(newSymptoms, "symptoms");
     record.setValue(newDrugs, "drugs");
-
-
 }

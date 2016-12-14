@@ -3,11 +3,9 @@
 
 #include <QString>
 
-class MedicamentData
+struct MedicamentData
 {
 public:
-    MedicamentData();
-
     QString drugName;
     double price;
     int amount;
@@ -15,6 +13,7 @@ public:
     QString form;
     double dose;
     int status;
+    QString cures;
 };
 
 #endif // MEDICAMENTDATA_H
