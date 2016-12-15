@@ -62,13 +62,11 @@ Item {
        }
 
 
-        Button {
-            width: 70
+        ElButton {
+            width: parent.width
             height: 30
             anchors.top: scope.bottom
-            anchors.topMargin: 20
-            anchors.left: parent.left
-            anchors.leftMargin: 20
+
             text: "Back"
             onClicked: medicamentTable.destroy()
         }

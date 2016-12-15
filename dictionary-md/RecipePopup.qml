@@ -181,6 +181,7 @@ Item {
             anchors.rightMargin: 100
             anchors.topMargin: 25
             text: "Form Recipe"
+            enabled: inputText.text != ""
             onClicked: {
                 drugStore.formResipe(inputText.text)
                 outputText.text = drugStore.getBestName()

@@ -29,11 +29,11 @@ int main(int argc, char *argv[])
     db.setPassword("1");
     bool ok = db.open();
     if (ok != true){
-        qDebug() << "Connection: Connection Failed!";
+   //     qDebug() << "Connection: Connection Failed!";
         dict.setMessage("Connection: Connection Failed!");
     }
     else {
-        qDebug() << "Connection: Connection OK!";
+   //     qDebug() << "Connection: Connection OK!";
         dict.setMessage("Connection: Connection OK!");
     }
 
@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
     diseaseModel->setQuery("select * from disease");
     CustomSqlModel *drugModel = new CustomSqlModel();
     drugModel->setQuery("select * from medicament");
+
+    dict.setModel(diseaseModel);
 
     Disease disease;
     disease.loadData();

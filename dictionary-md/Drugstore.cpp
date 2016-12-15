@@ -67,13 +67,17 @@ QString Drugstore::getBestForm()
 QString Drugstore::restDrugs()
 {
     int size = neededDrugs.size();
-    QString result = "Also you can use: \n";
-    for (int i = 0; i < size; i++){
-        if (neededDrugs[i].price != bestWorkingDrug.bestDrug.price){
-            QString price = QString::number(neededDrugs[i].price) ;
-            result += cutEmptySpace1(neededDrugs[i].drugName) + " for " + price +"$"+ "\n";
+    if (size == 1){
+        return "";
+    } else{
+        QString result = "Also you can use: \n";
+        for (int i = 0; i < size; i++){
+            if (neededDrugs[i].price != bestWorkingDrug.bestDrug.price){
+                QString price = QString::number(neededDrugs[i].price);
+                result += cutEmptySpace1(neededDrugs[i].drugName) + " for " + price +"$"+ "\n";
+            }
         }
+        return result;
     }
-    return result;
 }
 

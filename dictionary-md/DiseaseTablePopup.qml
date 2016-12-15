@@ -138,33 +138,70 @@ Item {
            }
        }
 
-        Button {
-            width: 70
-            height: 30
-            anchors.top: addNewRow.bottom
-            anchors.topMargin: 20
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            text: "Back"
-            onClicked: diseaseTable.destroy()
-        }
-        Button {
-            width: 70
-            height: 30
-            anchors.top: addNewRow.bottom
-            anchors.topMargin: 20
-            anchors.right: parent.right
-            anchors.rightMargin: 20
-            text: "Add"
-            enabled: {
-                if (newDrugs.text == "" || newName.text == "" || newProcedures.text == "" || newSymptoms == "")
-                    return false;
-                else
-                    return true;
-            }
+       Rectangle {
+           id: removeRow
+           anchors.top: addNewRow.bottom
+           height: 25
+           width: parent.width
+           color: Colors.darkGrayColor
 
-            onClicked: diseaseTable.destroy()
-        }
-    }
+           Text {
+               anchors.left: parent.left
+               anchors.margins: 5
+               height: 20
+               width: 30
+               text: "Name:"
+               color: Colors.normalTextColor
+           }
+           Rectangle {
+               anchors.left: parent.left
+               anchors.leftMargin: 50
+               anchors.margins: 5
+               height: 20
+               width: 100
+
+               TextEdit {
+                   id: nameToRemove
+                   anchors.fill: parent
+               }
+           }
+
+           Button {
+               anchors.right: parent.right
+               anchors.rightMargin: 500
+               width: 100
+               text: "Remove"
+               enabled: nameToRemove.text != ""
+               onClicked: dict.removeRow(nameToRemove.text, "disease")
+           }
+
+           Button {
+               anchors.right: parent.right
+               anchors.rightMargin: 50
+               width: 100
+               text: "Back"
+               onClicked: diseaseTable.destroy()
+           }
+
+           Button {
+               anchors.right: parent.right
+               anchors.rightMargin: 250
+               width: 200
+               text: "Add"
+               enabled: {
+                   if (newDrugs.text == "" || newName.text == "" || newProcedures.text == "" || newSymptoms.text == "")
+                       return false;
+                   else
+                       return true;
+               }
+
+               onClicked: {
+                   dict.addRow(newName.text, newSymptoms.text, newProcedures.text, newDrugs.text, "disease");
+                   diseaseTable.update()
+               }
+           }
+       }
+
+   }
 }
 

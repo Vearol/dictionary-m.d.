@@ -9,8 +9,15 @@ Window {
     visible: true
     minimumWidth: 800
     minimumHeight: 600
-
     color: Colors.applicationBackgroundColor
+
+    Image {
+        source: "file:///home/lyubomyr/Projects/dictionary-md/picture.jpg"
+        anchors.fill: parent
+        height: 300
+        width: 300
+        cache: true
+    }
 
     Rectangle {
         anchors.bottom: parent.bottom

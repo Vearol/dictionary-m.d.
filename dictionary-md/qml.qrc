@@ -8,5 +8,6 @@
         <file>RecipePopup.qml</file>
         <file>ActiveButton.qml</file>
         <file>SymptomsTable.qml</file>
+        <file>../picture.jpg</file>
     </qresource>
 </RCC>
